@@ -3,3 +3,5 @@ name: ledger
 description: A ledger for your CD pipeline
 version: 0.1.2
 appVersion: 0.1.2
+sources:
+  - https://github.com/stenic/helm-charts/tree/master/charts/ledger
