@@ -2,6 +2,15 @@ apiVersion: v1
 entries:
   ledger:
   - apiVersion: v2
+    appVersion: 0.1.1
+    created: "2020-05-08T16:10:00.594467231Z"
+    description: A ledger for your CD pipeline
+    digest: 20c113dd04563d689adb1b7c0eeb3199a45d35eaf547accf079e572e6b06bdcf
+    name: ledger
+    urls:
+    - https://github.com/stenic/helm-charts/releases/download/ledger-0.1.1/ledger-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
     appVersion: 0.1.0
     created: "2020-05-08T15:43:36.711940456Z"
     description: A ledger for your CD pipeline
