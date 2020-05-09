@@ -27,6 +27,11 @@ podSecurityContext: {}
 
 securityContext: {}
 
+statefulset:
+  volume:
+    name: ledger
+    path: /data
+
 service:
   type: ClusterIP
   port: 80

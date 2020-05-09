@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ include "ledger.fullname" . }}
+  labels:
+    {{- include "ledger.labels" . | nindent 4 }}
+spec:
+  selector:
+    matchLabels:
+      {{- include "ledger.selectorLabels" . | nindent 6 }}
+  serviceName: {{ include "ledger.fullname" . }}
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        {{- include "ledger.selectorLabels" . | nindent 8 }}
+    spec:
+      initContainers:
+      - name: {{ .Chart.Name }}-init
+        image: alpine:3.6
+        command:
+        - chmod
+        - -R  
+        - "777"
+        - /data
+        volumeMounts:
+        - name: "{{ template "ledger.fullname" . }}-data"
+          mountPath: /data
+      containers:
+      - name: {{ .Chart.Name }}
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+        env:
+        - name: LEDGER_PORT
+          value: "8080"
+        ports:
+        - name: http
+          containerPort: 8080
+          protocol: TCP
+        volumeMounts:
+        - name: {{ include "ledger.fullname" . }}-data
+          mountPath: /data
+  volumeClaimTemplates:
+  - metadata:
+      name: {{ include "ledger.fullname" . }}-data
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      # storageClassName: "my-storage-class"
+      resources:
+        requests:
+          storage: 1Gi
