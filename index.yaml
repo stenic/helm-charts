@@ -3,6 +3,17 @@ entries:
   ledger:
   - apiVersion: v2
     appVersion: 0.1.5
+    created: "2020-05-10T13:15:21.579803121Z"
+    description: A ledger for your CD pipeline
+    digest: 78d27a7a35b3a3f26f8a0f17a0bfbf2edfccf024c1a758ccdc20dfa8f9db69fb
+    name: ledger
+    sources:
+    - https://github.com/stenic/helm-charts/tree/master/charts/ledger
+    urls:
+    - https://github.com/stenic/helm-charts/releases/download/ledger-0.1.8/ledger-0.1.8.tgz
+    version: 0.1.8
+  - apiVersion: v2
+    appVersion: 0.1.5
     created: "2020-05-10T12:17:42.631875476Z"
     description: A ledger for your CD pipeline
     digest: 660a16d439772a85143c534ab9ca9f7b6ab28277075ab09fe305d337b7b472be
