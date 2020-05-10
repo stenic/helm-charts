@@ -1,5 +1,8 @@
 # Default values for ledger.
 
+ledger:
+  adminPassword: ""
+
 image:
   repository: "stenicbv/ledger"
   tag: ""
