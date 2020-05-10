@@ -32,6 +32,11 @@ spec:
         env:
         - name: LEDGER_PORT
           value: "8080"
+        - name: LEDGER_ADMINPASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "ledger.fullname" . }}
+              key: ledger-admin-password
         ports:
         - name: http
           containerPort: 8080
