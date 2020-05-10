@@ -41,12 +41,11 @@ service:
 
 ingress:
   enabled: false
+  hostName: ledger.example.com
   annotations: {}
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
-  hosts:
-    - host: ledger.example.com
-  tls: []
+  tls:
   #  - secretName: chart-example-tls
   #    hosts:
   #      - ledger.example.com
