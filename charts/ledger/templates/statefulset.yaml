@@ -69,7 +69,9 @@ spec:
       name: {{ include "ledger.fullname" . }}-data
     spec:
       accessModes: [ "ReadWriteOnce" ]
-      # storageClassName: "my-storage-class"
+      {{- with .Values.persistence.storageClass }}
+      storageClassName: "{{ . }}"
+      {{- end }}
       resources:
         requests:
           storage: 1Gi
