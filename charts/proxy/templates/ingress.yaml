@@ -4,6 +4,7 @@
 {{- $k8sVersion := .Capabilities.KubeVersion.GitVersion -}}
 {{- range .Values.proxy }}
 {{- $name := .name -}}
+---
 {{- if semverCompare ">=1.14-0" $k8sVersion -}}
 apiVersion: networking.k8s.io/v1beta1
 {{- else -}}

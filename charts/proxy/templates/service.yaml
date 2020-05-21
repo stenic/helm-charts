@@ -1,5 +1,6 @@
 {{- $servicePort := .Values.service.port -}}
 {{- range .Values.proxy }}
+---
 apiVersion: v1
 kind: Service
 metadata:

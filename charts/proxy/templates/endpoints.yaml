@@ -1,4 +1,5 @@
 {{- range .Values.proxy }}
+---
 apiVersion: v1
 kind: Endpoints
 metadata:
