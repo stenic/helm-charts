@@ -1,0 +1,11 @@
+{{- range .Values.proxy }}
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: {{ .name }}
+subsets:
+  - addresses:
+      - ip: {{ .backend.ip }}
+    ports:
+      - port: {{ .backend.port }}
+{{ end }}

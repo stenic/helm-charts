@@ -1,0 +1,33 @@
+{{- if .Values.ingress.enabled -}}
+{{- $servicePort := .Values.service.port -}}
+{{- $ingress := .Values.ingress -}}
+{{- $k8sVersion := .Capabilities.KubeVersion.GitVersion -}}
+{{- range .Values.proxy }}
+{{- $name := .name -}}
+{{- if semverCompare ">=1.14-0" $k8sVersion -}}
+apiVersion: networking.k8s.io/v1beta1
+{{- else -}}
+apiVersion: extensions/v1beta1
+{{- end }}
+kind: Ingress
+metadata:
+  name: {{ $name }}
+  {{- with $ingress.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  rules:
+  {{- range .hosts }}
+  - host: {{ .host }}
+    http:
+      paths:
+      {{- range .paths }}
+      - path: {{ . }}
+        backend:
+          serviceName: {{ $name }}
+          servicePort: {{ $servicePort }}
+      {{ end }}
+  {{- end }}
+{{- end }}
+{{- end }}
