@@ -105,4 +105,15 @@ entries:
     urls:
     - https://github.com/stenic/helm-charts/releases/download/ledger-0.1.0/ledger-0.1.0.tgz
     version: 0.1.0
+  proxy:
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2020-05-21T11:29:51.306784315Z"
+    description: A Helm chart for Kubernetes
+    digest: 8afc0dac1873a42f564aec5d435452108540078ba6c3f4df0a2410d8b6dba3f6
+    name: proxy
+    type: application
+    urls:
+    - https://github.com/stenic/helm-charts/releases/download/proxy-0.1.0/proxy-0.1.0.tgz
+    version: 0.1.0
 generated: "2020-05-08T15:43:36.565876581Z"
