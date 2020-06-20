@@ -30,6 +30,10 @@ spec:
         - -R  
         - "777"
         - /data
+        {{- with .Values.resources }}
+        resources:
+          {{- toYaml . | nindent 10 }}
+        {{- end }}
         volumeMounts:
         - name: "{{ template "ledger.fullname" . }}-data"
           mountPath: /data
@@ -49,6 +53,10 @@ spec:
         - name: http
           containerPort: 8080
           protocol: TCP
+        {{- with .Values.resources }}
+        resources:
+          {{- toYaml . | nindent 10 }}
+        {{- end }}
         volumeMounts:
         - name: {{ include "ledger.fullname" . }}-data
           mountPath: /data
