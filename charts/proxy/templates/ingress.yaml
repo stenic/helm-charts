@@ -18,6 +18,10 @@ metadata:
     {{- toYaml . | nindent 4 }}
   {{- end }}
 spec:
+{{- if .tls }}
+  tls:
+    {{- toYaml .tls | nindent 4 }}
+{{- end }}
   rules:
   {{- range .hosts }}
   - host: {{ .host }}

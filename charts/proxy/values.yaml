@@ -21,6 +21,10 @@ proxy:
   #   hosts:
   #     - host: nas.k8s
   #       paths: ["/"]
+  #   tls:
+  #     - hosts:
+  #         - https-example.foo.com
+  #       secretName: testsecret-tls
   #   backend:
   #     ip: 192.168.22.10
   #     port: 5000

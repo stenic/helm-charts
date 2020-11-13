@@ -64,6 +64,7 @@ The following tables list the configurable parameters of the Ledger chart and th
 | `proxy[].hosts[].paths`           | Paths to listen to                   | `[]`                                      |
 | `proxy[].backend.ip`              | The IP of the backend                | nil                                       |
 | `proxy[].backend.port`            | The port of the backend              | nil                                       |
+| `proxy[].tls`                     | TLS configuration                    | nil                                       |
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`.
 
