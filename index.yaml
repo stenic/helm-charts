@@ -119,6 +119,16 @@ entries:
   proxy:
   - apiVersion: v2
     appVersion: 1.0.0
+    created: "2020-11-14T00:26:44.458881401Z"
+    description: A Helm chart for Kubernetes
+    digest: 99d20d4b9624a8e82fd7aa8df5c07febe5ac6c32a4b9f7a67168be1c714217c8
+    name: proxy
+    type: application
+    urls:
+    - https://github.com/stenic/helm-charts/releases/download/proxy-1.0.1/proxy-1.0.1.tgz
+    version: 1.0.1
+  - apiVersion: v2
+    appVersion: 1.0.0
     created: "2020-11-14T00:20:26.0710915Z"
     description: A Helm chart for Kubernetes
     digest: 2c1e088a77a30b7bd382b2d5f5eaecef27d2ef57bc0c7c16516d3db58bb657e8
