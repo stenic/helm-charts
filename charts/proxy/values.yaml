@@ -6,25 +6,19 @@ serviceAccount:
   annotations: {}
   name: ""
 
-ingress:
-  enabled: false
-  annotations: 
-    # kubernetes.io/ingress.class: nginx
-    # kubernetes.io/tls-acme: "true"
-
 proxy:
-  # - name: nas
+  # - name: kubeapi
   #   service:
+  #     port: 6443
   #     extras:
-  #       loadBalancerIP: 192.168.22.170
   #       type: LoadBalancer
-  #   hosts:
-  #     - host: nas.k8s
-  #       paths: ["/"]
-  #   tls:
-  #     - hosts:
-  #         - https-example.foo.com
-  #       secretName: testsecret-tls
+  #       loadBalancerIP: "192.168.1.123"
+  #   ingress:
+  #     enabled: true
+  #     hosts:
+  #       - kubeapi.lan
+  #     paths: ['/']
+      
   #   backend:
-  #     ip: 192.168.22.10
-  #     port: 5000
+  #     ip: 192.168.22.11
+  #     port: 6443

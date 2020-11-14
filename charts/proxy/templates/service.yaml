@@ -1,5 +1,5 @@
 {{- range .Values.proxy }}
-{{ $svc := .service | default dict}}
+{{ $svc := .service | default dict }}
 ---
 apiVersion: v1
 kind: Service
@@ -11,6 +11,6 @@ spec:
 {{- end }}
   ports:
     - protocol: TCP
-      port: {{ $svc.port | default .backend.port }}
+      port: {{ $svc.port }}
       targetPort: {{ .backend.port }}
 {{- end }}
