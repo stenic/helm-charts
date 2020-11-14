@@ -1,13 +1,16 @@
-{{- $servicePort := .Values.service.port -}}
 {{- range .Values.proxy }}
+{{ $svc := .service | default dict}}
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: {{ .name }}
 spec:
+{{- with $svc.extras -}}
+  {{- toYaml . | nindent 2 }}
+{{- end }}
   ports:
     - protocol: TCP
-      port: {{ $servicePort }}
+      port: {{ $svc.port | default .backend.port }}
       targetPort: {{ .backend.port }}
 {{- end }}

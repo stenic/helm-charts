@@ -6,18 +6,12 @@ serviceAccount:
   annotations: {}
   name: ""
 
-ingress:
-  enabled: false
-  annotations: 
-    # kubernetes.io/ingress.class: nginx
-    # kubernetes.io/tls-acme: "true"
-
-service:
-  type: ClusterIP
-  port: 80
-
 proxy:
   # - name: nas
+  #   service:
+  #     extras:
+  #       loadBalancerIP: 192.168.22.170
+  #       type: LoadBalancer
   #   hosts:
   #     - host: nas.k8s
   #       paths: ["/"]
