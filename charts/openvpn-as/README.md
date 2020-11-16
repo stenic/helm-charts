@@ -42,7 +42,7 @@ The command removes all the Kubernetes components associated with the chart and 
 
 ## Configuration
 
-The following tables list the configurable parameters of the Ledger chart and their default values.
+The following tables list the configurable parameters of the openvpn-as chart and their default values.
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
