@@ -118,6 +118,16 @@ entries:
     version: 0.1.0
   openvpn-as:
   - apiVersion: v2
+    appVersion: version-2.8.6-916f8e7d-ubuntu18
+    created: "2020-11-16T20:46:48.939120874Z"
+    description: A Helm chart for Kubernetes
+    digest: baa82c15bd329c0a209c50a3aa11e121374e6675ec52a7e1d68fa0739e4c4aec
+    name: openvpn-as
+    type: application
+    urls:
+    - https://github.com/stenic/helm-charts/releases/download/openvpn-as-0.1.1/openvpn-as-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
     appVersion: 2.8.6-916f8e7d-Ubuntu18
     created: "2020-11-16T20:36:27.16248553Z"
     description: A Helm chart for Kubernetes
