@@ -4,3 +4,11 @@ description: A Helm chart for Kubernetes
 type: application
 version: 0.1.1
 appVersion: version-2.8.6-916f8e7d-ubuntu18
+maintainers:
+  - email: dries@stenic.io
+    name: Dries De Peuter
+home: https://github.com/stenic/helm-charts/tree/master/charts/openvpn-as
+sources: 
+  - https://github.com/stenic/helm-charts/tree/master/charts/openvpn-as
+  - https://github.com/linuxserver/docker-openvpn-as
+  - https://openvpn.net/vpn-server/
