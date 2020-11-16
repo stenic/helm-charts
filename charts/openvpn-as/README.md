@@ -4,7 +4,7 @@
 
 ```console
 helm repo add stenic https://stenic.github.io/helm-charts
-helm install my-release stenic/openvpn-as
+helm install my-release --set "service.type=LoadBalancer" stenic/openvpn-as
 ```
 
 ## Introduction
@@ -15,6 +15,7 @@ This chart installs `openvpn-as` on a [Kubernetes](http://kubernetes.io) cluster
 
 - Kubernetes 1.12+
 - Helm 3.0+
+- LoadBalancer to expose the vpn service
 - PV provisioner support in the underlying infrastructure
 
 ## Installing the Chart
@@ -23,7 +24,7 @@ To install the chart with the release name `my-release`:
 
 ```console
 helm repo add stenic https://stenic.github.io/helm-charts
-helm install my-release stenic/openvpn-as
+helm install my-release --set "service.type=LoadBalancer" stenic/openvpn-as
 ```
 
 These commands deploy openvpn-as on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.

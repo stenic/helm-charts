@@ -28,7 +28,7 @@ persistence:
   annotations: {}
   accessMode: "ReadWriteOnce"
   size: "8Gi"
-  
+
 image:
   repository: ghcr.io/linuxserver/openvpn-as
   pullPolicy: IfNotPresent
@@ -53,7 +53,7 @@ securityContext:
     add: ["NET_ADMIN"]
 
 service:
-  type: LoadBalancer
+  type: ClusterIP
   admin:
     type: ClusterIP
   gui:
@@ -90,4 +90,3 @@ resources: {}
 nodeSelector: {}
 tolerations: []
 affinity: {}
-
