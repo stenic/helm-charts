@@ -1,0 +1,93 @@
+# Default values for openvpn-as.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+openvpn:
+  ports:
+    admin: 943
+    gui: 944
+    tcp: 9443
+    udp: 1194
+  config:
+    vpn.client.routing.reroute_gw: "false"
+    vpn.client.routing.reroute_dns: "false"
+    # host.name: vpn.example.com
+
+  admin:
+    user: altmin
+    password: passw0rd
+  users:
+    # - user: someuser
+    #   password: somepassword
+
+persistence:
+  enabled: true
+  storageClass:
+  annotations: {}
+  accessMode: "ReadWriteOnce"
+  size: "8Gi"
+  
+image:
+  repository: ghcr.io/linuxserver/openvpn-as
+  pullPolicy: IfNotPresent
+  tag: ""
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  create: true
+  annotations: {}
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext:
+  fsGroup: 1000
+
+securityContext:
+  capabilities:
+    add: ["NET_ADMIN"]
+
+service:
+  type: LoadBalancer
+  admin:
+    type: ClusterIP
+  gui:
+    type: ClusterIP
+
+ingress:
+  gui:
+    enabled: false
+    annotations: {}
+      # kubernetes.io/ingress.class: nginx
+      # kubernetes.io/tls-acme: "true"
+    hostName: openvpn.local
+    tls:
+      enabled: true
+      secretName: openvpn-tls
+  admin:
+    enabled: false
+    annotations: {}
+      # kubernetes.io/ingress.class: nginx
+      # kubernetes.io/tls-acme: "true"
+    hostName: openvpn.local
+    tls:
+      enabled: true
+      secretName: openvpn-tls
+
+resources: {}
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+nodeSelector: {}
+tolerations: []
+affinity: {}
+

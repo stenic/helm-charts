@@ -1,0 +1,24 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "openvpn-as.fullname" . }}
+  labels:
+    {{- include "openvpn-as.labels" . | nindent 4 }}
+data:
+  25-restore-backup: |-
+    #!/usr/bin/with-contenv bash
+
+    mkdir -p /config/etc/db
+    cd /backup || exit
+    DBFILERES="*.db"
+    for f in $DBFILERES
+    do
+      echo "==> Restoring $f"
+      rm -f /config/etc/db/"$f"
+      sqlite3 </backup/"$f" /config/etc/db/"$f"
+    done
+
+    rm -f /config/etc/as.conf
+    echo "==> Restoring as.conf"
+    cp /backup/as.conf /config/etc/as.conf

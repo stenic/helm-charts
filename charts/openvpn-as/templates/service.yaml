@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "openvpn-as.fullname" . }}-tcp
+  labels:
+    {{- include "openvpn-as.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.openvpn.ports.tcp }}
+      targetPort: vpn-tcp
+      protocol: TCP
+      name: vpn-tcp
+  selector:
+    {{- include "openvpn-as.selectorLabels" . | nindent 4 }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "openvpn-as.fullname" . }}-udp
+  labels:
+    {{- include "openvpn-as.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.openvpn.ports.udp }}
+      targetPort: vpn-udp
+      protocol: UDP
+      name: vpn-udp
+  selector:
+    {{- include "openvpn-as.selectorLabels" . | nindent 4 }}

@@ -1,0 +1,105 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "openvpn-as.fullname" . }}
+  labels:
+    {{- include "openvpn-as.labels" . | nindent 4 }}
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      {{- include "openvpn-as.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      annotations:
+        checksum/configure: {{ include (print $.Template.BasePath "/secret-configure.yaml") . | sha256sum }}
+        {{- with .Values.podAnnotations }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
+      labels:
+        {{- include "openvpn-as.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "openvpn-as.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: admin
+              containerPort: {{ .Values.openvpn.ports.admin }}
+              protocol: TCP
+            - name: gui
+              containerPort: {{ .Values.openvpn.ports.gui }}
+              protocol: TCP
+            - name: vpn-tcp
+              containerPort: {{ .Values.openvpn.ports.tcp }}
+              protocol: TCP
+            - name: vpn-udp
+              containerPort: {{ .Values.openvpn.ports.udp }}
+              protocol: UDP
+          livenessProbe:
+            initialDelaySeconds: 100
+            timeoutSeconds: 5
+            exec:
+              command: ["/usr/local/openvpn_as/scripts/sacli", "Status"]
+          readinessProbe:
+            initialDelaySeconds: 100
+            tcpSocket:
+              port: {{ .Values.openvpn.ports.admin }}
+          env:
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
+            - name: TZ
+              value: "Europe/London"
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  apiVersion: v1
+                  fieldPath: metadata.name
+          volumeMounts:
+            - name: init
+              mountPath: /etc/cont-init.d/25-restore-backup
+              subPath: 25-restore-backup
+            - name: backup
+              mountPath: /backup
+              subPath: backup
+            - name: configure
+              mountPath: /config/custom-cont-init.d
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      volumes:
+        - name: init
+          configMap:
+            name: {{ include "openvpn-as.fullname" . }}
+            defaultMode: 0777
+        - name: configure
+          secret:
+            secretName: {{ include "openvpn-as.fullname" . }}-configure
+            defaultMode: 0777
+        - name: backup
+          persistentVolumeClaim:
+            claimName: {{ include "openvpn-as.fullname" . }}-state
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
