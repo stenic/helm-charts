@@ -11,10 +11,11 @@ metadata:
   name: {{ $fullName }}-gui
   labels:
     {{- include "openvpn-as.labels" . | nindent 4 }}
-  {{- with .Values.ingress.gui.annotations }}
   annotations:
+    nginx.ingress.kubernetes.io/backend-protocol: HTTPS
+    {{- with .Values.ingress.admin.annotations }}
     {{- toYaml . | nindent 4 }}
-  {{- end }}
+    {{- end }}
 spec:
   {{- if .Values.ingress.gui.tls.enabled }}
   tls:
