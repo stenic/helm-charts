@@ -133,6 +133,24 @@ entries:
   openvpn-as:
   - apiVersion: v2
     appVersion: version-2.8.6-916f8e7d-ubuntu18
+    created: "2020-11-17T00:32:25.582967809Z"
+    description: A Helm chart for Kubernetes
+    digest: 0dbf2b9e76bc27e8d7f6df54478e4c9e1e752b3475f2a01d49d9b53ceba75cf7
+    home: https://github.com/stenic/helm-charts/tree/master/charts/openvpn-as
+    maintainers:
+    - email: dries@stenic.io
+      name: Stenic
+    name: openvpn-as
+    sources:
+    - https://github.com/stenic/helm-charts/tree/master/charts/openvpn-as
+    - https://github.com/linuxserver/docker-openvpn-as
+    - https://openvpn.net/vpn-server/
+    type: application
+    urls:
+    - https://github.com/stenic/helm-charts/releases/download/openvpn-as-0.1.4/openvpn-as-0.1.4.tgz
+    version: 0.1.4
+  - apiVersion: v2
+    appVersion: version-2.8.6-916f8e7d-ubuntu18
     created: "2020-11-17T00:19:12.449654243Z"
     description: A Helm chart for Kubernetes
     digest: cfee58cec12c12c08c4e12d2ced6bee35b8da494a28db58269e698957a4bd1d0
