@@ -11,6 +11,8 @@ helm install my-release --set "service.type=LoadBalancer" stenic/openvpn-as
 
 This chart installs `openvpn-as` on a [Kubernetes](http://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
+[![openvpn-as](https://raw.githubusercontent.com/stenic/helm-charts/master/img/openvpn-as.png)](https://openvpn.net/index.php/access-server/overview.html)
+
 ## Prerequisites
 
 - Kubernetes 1.12+
