@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -e
+
+echo "==> Running helm template..."
+for chart in charts/*
+do
+    helm template $chart > /dev/null
+done

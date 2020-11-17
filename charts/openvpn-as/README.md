@@ -86,7 +86,7 @@ The following tables list the configurable parameters of the openvpn-as chart an
 | securityContext.capabilities.add[0] | string | `"NET_ADMIN"` |  |
 | service.admin.type | string | `"ClusterIP"` |  |
 | service.gui.type | string | `"ClusterIP"` |  |
-| service.type | string | `"LoadBalancer"` |  |
+| service.type | string | `"ClusterIP"` |  |
 | serviceAccount.annotations | object | `{}` |  |
 | serviceAccount.create | bool | `true` |  |
 | serviceAccount.name | string | `""` |  |

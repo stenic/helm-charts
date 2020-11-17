@@ -1,0 +1,4 @@
+#!/bin/bash
+
+echo "==> Running helm template..."
+ct lint --config ct.yaml
