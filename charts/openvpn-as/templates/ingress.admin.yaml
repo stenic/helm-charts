@@ -31,6 +31,4 @@ spec:
             backend:
               serviceName: {{ $fullName }}-admin
               servicePort: {{ .Values.openvpn.ports.admin }}
-            port:
-              number: 80
   {{- end }}
