@@ -1,7 +1,7 @@
 apiVersion: v2
 name: prometheus-pve-exporter
 description: A Helm chart to export the metrics from pve in Prometheus format.
-version: 0.1.0
+version: 0.1.1
 appVersion: "2.0.1"
 keywords:
 - pve-exporter
