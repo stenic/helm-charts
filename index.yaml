@@ -278,6 +278,31 @@ entries:
     urls:
     - https://github.com/stenic/helm-charts/releases/download/openvpn-as-0.1.0/openvpn-as-0.1.0.tgz
     version: 0.1.0
+  prometheus-pve-exporter:
+  - annotations:
+      artifacthub.io/links: |
+        - name: Chart Source
+          url: https://github.com/stenic/helm-charts
+        - name: Upstream Project
+          url: https://github.com/prometheus-pve/prometheus-pve-exporter
+    apiVersion: v2
+    appVersion: 2.0.1
+    created: "2020-12-03T22:45:47.16182624Z"
+    description: A Helm chart to export the metrics from pve in Prometheus format.
+    digest: 01537f92495f431d71195a77bbf3e402b05327b4aedbe91fade97892f9951202
+    home: https://github.com/prometheus-pve/prometheus-pve-exporter
+    keywords:
+    - pve-exporter
+    maintainers:
+    - email: dries@stenic.io
+      name: Stenic
+    name: prometheus-pve-exporter
+    sources:
+    - https://github.com/prometheus-pve/prometheus-pve-exporter
+    - https://github.com/stenic/helm-charts/tree/master/charts/
+    urls:
+    - https://github.com/stenic/helm-charts/releases/download/prometheus-pve-exporter-0.1.0/prometheus-pve-exporter-0.1.0.tgz
+    version: 0.1.0
   proxy:
   - apiVersion: v2
     appVersion: 1.0.0
