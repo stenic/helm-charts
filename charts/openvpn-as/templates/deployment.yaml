@@ -62,7 +62,7 @@ spec:
             - name: PGID
               value: "1000"
             - name: TZ
-              value: "Europe/London"
+              value: {{quote .Values.openvpn.timezone }}
             - name: POD_NAME
               valueFrom:
                 fieldRef:
@@ -72,9 +72,12 @@ spec:
             - name: init
               mountPath: /etc/cont-init.d/25-restore-backup
               subPath: 25-restore-backup
-            - name: backup
+            - name: persistence
               mountPath: /backup
-              subPath: backup
+              subPath: {{ .Values.persistence.backupSubpath }}
+            - name: persistence
+              mountPath: /usr/local/openvpn_as/etc/licenses/
+              subPath: {{ .Values.persistence.licensesSubpath }}
             - name: configure
               mountPath: /config/custom-cont-init.d
           resources:
@@ -88,9 +91,13 @@ spec:
           secret:
             secretName: {{ include "openvpn-as.fullname" . }}-configure
             defaultMode: 0777
-        - name: backup
+        - name: persistence
           persistentVolumeClaim:
+            {{- if .Values.persistence.existingClaimName }}
+            claimName: {{ .Values.persistence.existingClaimName }}
+            {{- else }}
             claimName: {{ include "openvpn-as.fullname" . }}-state
+            {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
