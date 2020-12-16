@@ -5,6 +5,7 @@
 replicaCount: 1
 
 openvpn:
+  timezone: Europe/London
   ports:
     # -- Admin GUI port
     admin: 943
@@ -21,7 +22,7 @@ openvpn:
     # host.name: vpn.example.com
 
   admin:
-    # -- Username for the initial super_user
+    # -- Username for the initial super_user. Cannot be `admin`
     user: altmin
     # -- Password for the initial super_user
     password: passw0rd
@@ -41,6 +42,12 @@ persistence:
   accessMode: "ReadWriteOnce"
   # -- PVC Storage Request for volume
   size: "8Gi"
+  # -- used when PVC already created before install
+  existingClaimName:
+  # -- Indicate another subpath for backup storage
+  backupSubpath: backup
+  # -- Indicate another subpath for licenses storage
+  licensesSubpath: licenses
 
 image:
   # -- Image repository
@@ -76,6 +83,10 @@ securityContext:
 service:
   # -- Kubernetes Service type for VPN, generally this is "LoadBalancer"
   type: ClusterIP
+  tcp:
+    enabled: true
+  udp:
+    enabled: true
   admin:
     # -- Kubernetes Service type for Admin GUI
     type: ClusterIP
