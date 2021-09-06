@@ -2,7 +2,7 @@ apiVersion: v2
 name: openvpn-as
 description: A Helm chart for Kubernetes
 type: application
-version: 0.1.8
+version: 0.2.0
 appVersion: version-2.8.6-916f8e7d-ubuntu18
 maintainers:
   - email: dries@stenic.io
