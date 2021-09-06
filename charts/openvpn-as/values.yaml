@@ -104,6 +104,7 @@ ingress:
       # kubernetes.io/tls-acme: "true"
     # -- Host for the Client GUI
     hostName: client.openvpn.local
+    ingressClassName: # set ingressClassName here, or leave it unset
     tls:
       # -- Enable TLS configuration for the hostname defined at ingress.gui.hostname parameter
       enabled: true
@@ -117,6 +118,7 @@ ingress:
       # kubernetes.io/tls-acme: "true"
     # -- Host for the Admin GUI
     hostName: admin.openvpn.local
+    ingressClassName: # set ingressClassName here, or leave it unset
     tls:
       # -- Enable TLS configuration for the hostname defined at ingress.admin.hostname parameter
       enabled: true
