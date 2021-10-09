@@ -1,0 +1,3 @@
+securityContext:
+  # Fix running on github actions
+  capabilities: {}
