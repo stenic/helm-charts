@@ -2,6 +2,7 @@
 
 [![Lint and Test Charts](https://github.com/stenic/helm-charts/actions/workflows/lint.yml/badge.svg)](https://github.com/stenic/helm-charts/actions/workflows/lint.yml)
 [![Artifact HUB](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/stenic)](https://artifacthub.io/packages/search?repo=stenic)
+
 Helm Charts for Kubernetes.
 
 ## Installation
