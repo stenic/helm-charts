@@ -3,7 +3,7 @@
 ## TL;DR;
 
 ```console
-helm repo add stenic https://stenic.github.io/helm-charts
+helm repo add stenic https://charts.stenic.io
 helm install my-release --set "service.type=LoadBalancer" stenic/{{ template "chart.name" . }}
 ```
 
@@ -27,7 +27,7 @@ This chart installs `{{ template "chart.name" . }}` on a [Kubernetes](http://kub
 To install the chart with the release name `my-release`:
 
 ```console
-helm repo add stenic https://stenic.github.io/helm-charts
+helm repo add stenic https://charts.stenic.io
 helm install my-release --set "service.type=LoadBalancer" stenic/{{ template "chart.name" . }}
 ```
 
