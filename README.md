@@ -5,7 +5,7 @@ Applications, provided by [Stenic](https://stenic.io), ready to launch on Kubern
 ## TL;DR
 
 ```
-$ helm repo add stenic https://stenic.github.io/helm-charts
+$ helm repo add stenic https://charts.stenic.io
 $ helm search repo stenic
 $ helm install my-release stenic/<chart>
 ```

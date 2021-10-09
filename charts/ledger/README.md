@@ -3,7 +3,7 @@
 ## TL;DR;
 
 ```console
-helm repo add stenic https://stenic.github.io/helm-charts
+helm repo add stenic https://charts.stenic.io
 helm install my-release stenic/ledger
 ```
 
@@ -22,7 +22,7 @@ This chart installs `ledger` on a [Kubernetes](http://kubernetes.io) cluster usi
 To install the chart with the release name `my-release`:
 
 ```console
-helm repo add stenic https://stenic.github.io/helm-charts
+helm repo add stenic https://charts.stenic.io
 helm install my-release stenic/ledger
 ```
 

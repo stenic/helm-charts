@@ -1,7 +1,7 @@
 apiVersion: v2
 name: ledger
 description: A ledger for your CD pipeline
-version: 0.1.11
+version: 0.1.12
 appVersion: 0.1.5
 maintainers:
   - email: dries@stenic.io
