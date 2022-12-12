@@ -57,13 +57,13 @@ The following tables list the configurable parameters of the openvpn-as chart an
 | imagePullSecrets | list | `[]` | Registry secret names as an array |
 | ingress.admin.annotations | object | `{}` | Ingress annotations |
 | ingress.admin.enabled | bool | `false` | Enable ingress resource for Admin GUI |
-| ingress.admin.hostName | string | `"admin.openvpn.local"` |  |
+| ingress.admin.hostName | string | `"admin.openvpn.local"` | Host for the Admin GUI |
 | ingress.admin.ingressClassName | string | `nil` | set ingressClassName here, or leave it unset |
 | ingress.admin.tls.enabled | bool | `true` | Enable TLS configuration for the hostname defined at ingress.admin.hostname parameter |
 | ingress.admin.tls.secretName | string | `"admin.openvpn-tls"` |  |
 | ingress.gui.annotations | object | `{}` | Ingress annotations |
 | ingress.gui.enabled | bool | `false` | Enable ingress resource for Client GUI |
-| ingress.gui.hostName | string | `"client.openvpn.local"` |  |
+| ingress.gui.hostName | string | `"client.openvpn.local"` | Host for the Client GUI |
 | ingress.gui.ingressClassName | string | `nil` | Set ingressClassName here, or leave it unset |
 | ingress.gui.tls.enabled | bool | `true` | Enable TLS configuration for the hostname defined at ingress.gui.hostname parameter |
 | ingress.gui.tls.secretName | string | `"client.openvpn-tls"` |  |
